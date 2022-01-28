@@ -34,7 +34,7 @@ export function parseGuessResult(
           resultMap[letter].correctPositions.push(i);
         } else {
           resultMap[letter] = getCorrectResult(i);
-          resultMap[letter].incorrectPositions = [1, 2, 3, 4, 5].filter(
+          resultMap[letter].incorrectPositions = [0, 1, 2, 3, 4].filter(
             (n) => n !== i
           );
         }
@@ -60,7 +60,7 @@ export function parseGuessResult(
         ) {
           resultMap[letter].incorrectPositions.push(i);
         } else if (resultMap[letter].status === "CORRECT") {
-          resultMap[letter].incorrectPositions = [1, 2, 3, 4, 5].filter(
+          resultMap[letter].incorrectPositions = [0, 1, 2, 3, 4].filter(
             (n) => !resultMap[letter].correctPositions.includes(n)
           );
         }
@@ -94,5 +94,41 @@ const getPartialResult = (position: number): LetterResult => ({
 const getIncorrectResult = (): LetterResult => ({
   status: "INCORRECT",
   correctPositions: [],
-  incorrectPositions: [1, 2, 3, 4, 5],
+  incorrectPositions: [0, 1, 2, 3, 4],
 });
+
+export function combinePositionValues(info: number[], res: number[]): number[] {
+  return [...info, ...res].reduce(
+    (prev, curr) => (prev.includes(curr) ? prev : [...prev, curr]),
+    []
+  );
+}
+
+//Resolve these guesses
+// Object.keys(guessResult).forEach((letter) => {
+//   const res = guessResult[letter];
+//   if (!(letter in this.letterInformation)) {
+//     this.letterInformation[letter] = guessResult[letter];
+//     return;
+//   }
+//   const info = this.letterInformation[letter];
+//   // We can go from partial/multi-instance to correct, else the state is expected to stay the same
+//   this.letterInformation[letter].correctPositions = combinePositionValues(
+//     info.correctPositions,
+//     res.correctPositions
+//   );
+//   this.letterInformation[letter].incorrectPositions = combinePositionValues(
+//     info.incorrectPositions,
+//     res.incorrectPositions
+//   );
+//   if (info.status === "CORRECT" || info.status === "INCORRECT") {
+//     // if info status is incorrect, then this letter can never be in this block, if it is correct, then we gucci
+//     return;
+//   }
+//   if (
+//     (info.status === "PARTIAL" || info.status === "MULTI_INSTANCE") &&
+//     res.status === "CORRECT"
+//   ) {
+//     this.letterInformation[letter].status = "CORRECT"
+//   }
+// });

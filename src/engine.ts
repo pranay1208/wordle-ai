@@ -1,9 +1,10 @@
 import { LetterResult } from "./interface";
-import { getWordWeightage } from "./utils";
+import { getWordWeightage, parseGuessResult } from "./utils";
 import listOfWords from "./wordList";
 
 class WordGuessEngine {
   filteredWordList: string[];
+  // To add some additional information regarding word picking (so as to add heuristic capabilities)
   letterInformation: Record<string, LetterResult>;
 
   constructor() {
@@ -25,19 +26,49 @@ class WordGuessEngine {
     let bestGuess = "";
     let bestGuessWeight = 0;
     this.filteredWordList.forEach((word) => {
-      const wordWeight = this.wordWeightage(word);
+      const wordWeight = getWordWeightage(word);
       if (wordWeight > bestGuessWeight) {
         bestGuessWeight = wordWeight;
         bestGuess = word;
       }
     });
-    console.log(`Guessing ${bestGuess} with a weightage of ${bestGuessWeight}`);
     return bestGuess;
   }
 
   //TODO: Implement weightage based on information in this.letterInformation
-  wordWeightage(word: string): number {
-    return getWordWeightage(word);
+  // wordWeightage(word: string): number {
+  //   return getWordWeightage(word);
+  // }
+
+  handleGuessResult(word: string, result: string): void {
+    const guessResult = parseGuessResult(word, result);
+    for (const letter of Object.keys(guessResult)) {
+      const res = guessResult[letter];
+
+      if (res.status === "INCORRECT") {
+        this.filteredWordList = this.filteredWordList.filter(
+          (w) => !w.includes(letter)
+        );
+      } else if (res.status === "CORRECT" || res.status === "MULTI_INSTANCE") {
+        this.filteredWordList = this.filteredWordList.filter((w) => {
+          for (let pos of res.correctPositions) {
+            if (w[pos] !== letter) return false;
+          }
+          for (let pos of res.incorrectPositions) {
+            if (w[pos] === letter) return false;
+          }
+          return true;
+        });
+      } else {
+        this.filteredWordList = this.filteredWordList.filter((w) => {
+          if (!w.includes(letter)) return false;
+          for (let pos of res.incorrectPositions) {
+            if (w[pos] === letter) return false;
+          }
+          return true;
+        });
+      }
+    }
   }
 }
 

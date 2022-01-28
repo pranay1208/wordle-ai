@@ -1,18 +1,20 @@
 import * as readline from "readline-sync";
 import WordGuessEngine from "./engine";
-import { getWordWeightage, parseGuessResult } from "./utils";
-import listOfWords from "./wordList";
 
-async function main() {
-  const answer = readline.question("Enter a word: ");
-  const includes = listOfWords.includes(answer);
-  console.log(`${answer} is ${includes ? "" : "not "}a valid word`);
-  if (!includes) {
-    return;
+function main() {
+  const engine = new WordGuessEngine();
+  let result = "",
+    numGuesses = 0;
+  while (result !== "11111") {
+    numGuesses++;
+    const guess = engine.getGuess();
+    result = readline.question(`Engine guesses ${guess.toUpperCase()}: `);
+    if (result.length !== 5) {
+      throw new Error("SMALL RESULT");
+    }
+    engine.handleGuessResult(guess, result);
   }
-  console.log(`${answer} has a word weightage of ${getWordWeightage(answer)}`);
-  const guessResult = readline.question("Enter guess result: ");
-  console.log(parseGuessResult(answer, guessResult));
+  console.log("Correctly guessed in", numGuesses, "tries");
 }
 
 main();
