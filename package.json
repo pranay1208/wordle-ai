@@ -1,0 +1,23 @@
+{
+  "name": "wordle-ai",
+  "version": "1.0.0",
+  "description": "An AI bot that solves Wordle using letter-position heuristics",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranay1208/wordle-ai.git"
+  },
+  "author": "Pranay Agarwal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranay1208/wordle-ai/issues"
+  },
+  "homepage": "https://github.com/pranay1208/wordle-ai#readme",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
+}
