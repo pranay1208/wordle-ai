@@ -1,4 +1,5 @@
 import * as readline from "readline-sync";
+import WordGuessEngine from "./engine";
 import { getWordWeightage, parseGuessResult } from "./utils";
 import listOfWords from "./wordList";
 
