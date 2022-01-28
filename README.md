@@ -16,3 +16,8 @@ Simply clone and run `npm run start` locally to start the program. After each gu
 --- The correct word is "happy"
 Engine guesses APPLE: -01--
 ```
+
+## Future Improvements
+
+1. Integrate with puppeteer so it can guess on browser (maintaining the browser's LocalState)
+2. Write word-structure heuristics to maintain previous guess results and make vowel-consonant connections
