@@ -1,5 +1,39 @@
+import pptr from "puppeteer";
 import { LetterResult } from "./interface";
 import letterWeight from "./letterWeights";
+
+export async function typeGuess(page: pptr.Page, guess: string) {
+  for (let i = 0; i < guess.length; i++) {
+    const key: pptr.KeyInput = `Key${guess[i].toUpperCase()}` as pptr.KeyInput;
+    await page.keyboard.press(key, { delay: 400 });
+  }
+  await page.keyboard.press("Enter");
+}
+
+export async function getResult(
+  page: pptr.Page,
+  resultNumber: number
+): Promise<string> {
+  const wordleResult: string[] | null = await page.evaluate((num) => {
+    const json = JSON.parse(localStorage.getItem("gameState"));
+    return json.evaluations[num];
+  }, resultNumber);
+  return wordleResult
+    .map((res) => {
+      switch (res) {
+        case "absent":
+          return "_";
+        case "correct":
+          return "1";
+        case "present":
+          return "0";
+        default:
+          console.log(`Found ${res} which is not recognized!!`);
+          throw new Error("Unrecognized result value");
+      }
+    })
+    .join("");
+}
 
 export function getWordWeightage(word: string): number {
   let wordPopularity = 0;
