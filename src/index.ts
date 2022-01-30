@@ -67,6 +67,8 @@ async function main() {
       );
     }
 
+    readline.question("Cleanup?");
+
     //save statistics
     const newStatistics = await page.evaluate(() =>
       localStorage.getItem("statistics")

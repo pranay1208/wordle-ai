@@ -4,20 +4,16 @@ A simple program that solves the Wordle puzzle by process of elimination. Curren
 
 ## Usage
 
-Simply clone and run `npm run start` locally to start the program. After each guess, the script requires an input that validates its guess.
+Simply clone and run `npm run start` locally to start the program.
 
-'1' -> Correct letter in right position
+Since currently there are issues pertaining to shadow-roots on the wordle website, there is a need for manual assistance. On load, there is usually a popup that needs to be closed; do so and hit enter in the console (against the 'Ready?' prompt). Then, once a word is typed, wait for the verification animation to end before clicking ready again.
 
-'0' -> Incorrect position but letter in word
+Do this until the Engine correctly guesses the word or fails to guess, and then hit enter (against the 'Cleanup?' prompt) to tell the program to close the browser and perform clean up actions
 
-'-' -> Letter not in word (any character instead of 0 or 1 will satisfy this constraint)
-
-```
---- The correct word is "happy"
-Engine guesses APPLE: -01--
 ```
 
 ## Future Improvements
 
 1. Integrate with puppeteer so it can guess on browser (maintaining the browser's LocalState)
 2. Write word-structure heuristics to maintain previous guess results and make vowel-consonant connections
+```
