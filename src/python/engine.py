@@ -1,4 +1,3 @@
-import datetime
 from worldList import LIST_OF_ANSWERS
 from interface import LetterResult
 from utils import *
@@ -6,12 +5,6 @@ from utils import *
 class Engine:
     def __init__(self) -> None:
         self.filteredWordList = LIST_OF_ANSWERS
-    
-    def getCorrectGuessOfDay() -> str:
-        start_day = datetime.date(2021, 6, 19)
-        today = datetime.date.today()
-        index = (today - start_day).days
-        return LIST_OF_ANSWERS[index % len(LIST_OF_ANSWERS)]
 
     def getGuess(self) -> str :
         bestGuess: str = ''

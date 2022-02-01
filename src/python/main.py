@@ -1,17 +1,25 @@
+import sys
 from engine import Engine
+from validation import Validator
+
+answer = None if len(sys.argv) < 2 else sys.argv[1]
+
+if(not Validator.isValidAnswer(answer)):
+    print(f"'{answer}' is not a recognised answer")
+    raise Exception("INVALID ANSWER")
 
 
 engine = Engine()
+validator = Validator(answer)
 result: str = ''
 numGuesses: int = 0
 
 while result != '11111' or numGuesses >= 6:
     numGuesses += 1
     guess = engine.getGuess()
-    result = input(f"Engine guesses {guess.upper()}: ")
-    if len(result) != 5:
-        print('Result not sized correctly')
-        raise Exception('IMPROPER RESULT')
+    print(f"Engine guesses {guess.upper()}:", end=' ')
+    result = validator.validateGuess(guess)
+    print(result)
     engine.handleGuessResult(guess, result)
 
 if numGuesses <= 6:
