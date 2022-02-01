@@ -1,5 +1,5 @@
 import datetime
-from worldList import LIST_OF_ANSWERS   
+from Wordle.WorldList import LIST_OF_ANSWERS   
 
 def getCorrectGuessOfDay() -> str:
     start_day = datetime.date(2021, 6, 19)

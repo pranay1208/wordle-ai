@@ -1,5 +1,4 @@
-from worldList import LIST_OF_ANSWERS
-from interface import LetterResult
+from Wordle.WorldList import LIST_OF_ANSWERS
 from utils import *
 
 class Engine:
@@ -20,7 +19,7 @@ class Engine:
         guessResult = parseGuessResult(word, result)
 
         for letter in guessResult.keys():
-            res : LetterResult = guessResult[letter]
+            res = guessResult[letter]
 
             if res.status == "INCORRECT":
                 self.filteredWordList = list(

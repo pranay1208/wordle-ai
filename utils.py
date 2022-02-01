@@ -1,7 +1,5 @@
-from operator import le
-from re import L
-from heuristics import LETTER_FREQUENCIES
-from interface import LetterResult
+from Wordle.Heuristics import LETTER_FREQUENCIES
+from Classes.Interface import LetterResult
 
 def getWordWeightage(word: str) -> int:
     popularity: int = 0
@@ -12,7 +10,7 @@ def getWordWeightage(word: str) -> int:
     return popularity 
 
 
-def parseGuessResult(word: str, result: str) -> dict:
+def parseGuessResult(word: str, result: str) -> dict[str, LetterResult]:
     resultMap = {}
     for i in range(len(word)):
         letter = word[i]
@@ -56,7 +54,7 @@ def parseGuessResult(word: str, result: str) -> dict:
             resultMap[letter] = LetterResult.newIncorrectResult()
     return resultMap
 
-def filterWord(letter: str, word: str, correct, incorrect) -> bool:
+def filterWord(letter: str, word: str, correct: 'list[int]', incorrect: 'list[int]') -> bool:
     if not letter in word: 
         return False
     for pos in correct:

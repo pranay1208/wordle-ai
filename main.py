@@ -1,6 +1,6 @@
 import sys
-from engine import Engine
-from validation import Validator
+from Classes.Engine import Engine
+from Classes.Validator import Validator
 
 answer = None if len(sys.argv) < 2 else sys.argv[1]
 

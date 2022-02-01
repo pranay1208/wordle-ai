@@ -1,19 +1,18 @@
 # wordle-ai
 
-A simple program that solves the Wordle puzzle by process of elimination. Currently, it uses up ~5 moves to correctly guess each word.
+A discord bot that makes an attempt to solve a wordle puzzle using constraint satisfaction.
 
 ## Usage
 
-Simply clone and run `npm run start` locally to start the program.
+Simply clone and run `python src/main.py [arg]` locally to start the program.
 
-Since currently there are issues pertaining to shadow-roots on the wordle website, there is a need for manual assistance. On load, there is usually a popup that needs to be closed; do so and hit enter in the console (against the 'Ready?' prompt). Then, once a word is typed, wait for the verification animation to end before clicking ready again.
-
-Do this until the Engine correctly guesses the word or fails to guess, and then hit enter (against the 'Cleanup?' prompt) to tell the program to close the browser and perform clean up actions
+You can pass in an optional command line argument to make it guess that word. If no arguemnt is passed, it will guess Wordle's word of the day
 
 ```
 
-## Future Improvements
+## Future Work
 
-1. Integrate with puppeteer so it can guess on browser (maintaining the browser's LocalState)
-2. Write word-structure heuristics to maintain previous guess results and make vowel-consonant connections
+1. Integrate with Discord
+2. Update constraint satisfaction heuristics to pick the word that eliminates most options
+3. Include the 'non-answer' words from Wordle into engine
 ```
