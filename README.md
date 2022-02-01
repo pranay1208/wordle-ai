@@ -4,7 +4,7 @@ A discord bot that makes an attempt to solve a wordle puzzle using constraint sa
 
 ## Usage
 
-Simply clone and run `python src/main.py [arg]` locally to start the program.
+Simply clone and run `python main.py [arg]` locally to start the program.
 
 You can pass in an optional command line argument to make it guess that word. If no arguemnt is passed, it will guess Wordle's word of the day
 
