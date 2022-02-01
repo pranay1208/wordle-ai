@@ -1,4 +1,4 @@
-from Wordle.WorldList import LIST_OF_ANSWERS
+from Wordle.WordList import LIST_OF_ANSWERS
 from utils import *
 
 class Engine:
