@@ -2,6 +2,8 @@
 
 A discord bot that makes an attempt to solve a wordle puzzle using constraint satisfaction.
 
+This algorithm runs in linear time [O(n)] and uses largest elimination heuristic till the valid answer list is smaller than 10 elements, then picks by letter popularity.
+
 ## Usage
 
 ### Local (without discord)
