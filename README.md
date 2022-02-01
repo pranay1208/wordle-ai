@@ -38,6 +38,4 @@ Since currently this bot has not been deployed to production, you would have to 
 
 ## Future Work
 
-1. Update constraint satisfaction heuristics to pick the word that eliminates most options
-2. Deploy to production
-3. Include the 'non-answer' words from Wordle into engine
+1. Deploy to production

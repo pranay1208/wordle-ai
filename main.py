@@ -13,7 +13,9 @@ def makeBotGuess(answer: str | None) -> str:
     numGuesses: int = 0
     listOfGuessResults : list[str] = []
 
-    while result != '11111' or numGuesses >= 6:
+    while result != '11111' and numGuesses <= 6:
+        print(f"Search space is now {len(engine.filteredWordList)} + {len(engine.validGuessList)}")
+        engine.computeHeuristics()
         numGuesses += 1
         guess = engine.getGuess()
         print(f"Engine guesses {guess.upper()}:", end=' ')
