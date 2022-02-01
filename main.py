@@ -20,7 +20,6 @@ def makeBotGuess(answer: str | None) -> str:
         result = validator.validateGuess(guess)
         print(result)
         listOfGuessResults.append(result)
-        print(listOfGuessResults)
         engine.handleGuessResult(guess, result)
 
     topText = ''
