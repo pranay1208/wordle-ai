@@ -1,4 +1,4 @@
-import sys
+# import sys
 from Classes.Engine import Engine
 from Classes.Validator import Validator
 
@@ -49,5 +49,5 @@ def makeBotGuess(answer: str | None) -> str:
     return f"{topText}\n\n{emojiText}"
 
 
-answer = None if len(sys.argv) < 2 else sys.argv[1]
-makeBotGuess(answer)
+# answer = None if len(sys.argv) < 2 else sys.argv[1]
+# makeBotGuess(answer)
