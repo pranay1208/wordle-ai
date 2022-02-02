@@ -1,4 +1,4 @@
-# import sys
+import sys
 from Classes.Engine import Engine
 from Classes.Validator import Validator
 
@@ -13,10 +13,12 @@ def makeBotGuess(answer: str | None) -> str:
     numGuesses: int = 0
     listOfGuessResults : list[str] = []
 
-    while result != '11111' and numGuesses <= 6:
+    while result != '11111':
         print(f"Search space is now {len(engine.filteredWordList)} + {len(engine.validGuessList)}")
         engine.computeHeuristics()
         numGuesses += 1
+        if numGuesses > 6:
+            break
         guess = engine.getGuess()
         print(f"Engine guesses {guess.upper()}:", end=' ')
         result = validator.validateGuess(guess)
@@ -47,5 +49,5 @@ def makeBotGuess(answer: str | None) -> str:
     return f"{topText}\n\n{emojiText}"
 
 
-# answer = None if len(sys.argv) < 2 else sys.argv[1]
-# makeBotGuess(answer)
+answer = None if len(sys.argv) < 2 else sys.argv[1]
+makeBotGuess(answer)

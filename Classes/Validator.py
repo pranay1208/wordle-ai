@@ -58,7 +58,8 @@ class Validator:
                         existingResult.status = "MULTI_INSTANCE"
                         existingResult.correctPositions.append(i)
                     else:
-                        existingResult = LetterResult.newCorrectResult(i)
+                        resultMap[letter] = LetterResult.newCorrectResult(i)
+                        existingResult = resultMap[letter]
                         existingResult.incorrectPositions = [j for j in range(5)]
                         existingResult.incorrectPositions.remove(i)
                 elif res == "0":
@@ -73,7 +74,7 @@ class Validator:
                 else:
                     if existingResult.status == "CORRECT":
                         existingResult.incorrectPositions = list(
-                                filter(lambda num: not num in existingResult.correctPositions, [j for j in range(5)])
+                                filter(lambda num: num not in existingResult.correctPositions, [j for j in range(5)])
                             )
                     elif existingResult.status == "PARTIAL" or existingResult.status == "MULTI_INSTANCE":
                         existingResult.incorrectPositions.append(i)

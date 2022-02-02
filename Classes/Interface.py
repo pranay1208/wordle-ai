@@ -4,6 +4,9 @@ class LetterResult :
         self.correctPositions : list[int] = []
         self.incorrectPositions: list[int] = []
 
+    def __str__(self) -> str:
+        return f"{self.status}: {self.correctPositions} | {self.incorrectPositions}"
+
     def newCorrectResult(i: int):
         newResult = LetterResult()
         newResult.status = "CORRECT"
