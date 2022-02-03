@@ -1,11 +1,12 @@
 # import sys
+from datetime import date
 from Classes.Engine import Engine
 from Classes.Validator import Validator
 
 def makeBotGuess(answer: str | None) -> str:
     if(not Validator.isValidAnswer(answer)):
         print(f"'{answer}' is not a recognised answer")
-        return f"{answer} is not a recognised word. You can check out legitimate words at <https://github.com/pranay1208/wordle-ai/blob/master/Wordle/WordList.py>"
+        return f"**{answer.upper()}** is not a recognised word. You can check out legitimate words at <https://github.com/pranay1208/wordle-ai/blob/master/Wordle/WordList.py>"
 
     engine = Engine()
     validator = Validator(answer)
@@ -29,10 +30,16 @@ def makeBotGuess(answer: str | None) -> str:
     topText = ''
     if numGuesses <= 6:
         print(f"Correctly guessed in {numGuesses} tries!")
-        topText = f"Correctly guessed in {numGuesses}/6 tries, suckas"
+        topText = f"Correctly guessed in {numGuesses}/6 tries, suckas."
     else:
         print("Could not guess the word correctly")
-        topText = f"I did a fucky wucky and couldn't guess"
+        topText = f"I did a fucky wucky and couldn't guess."
+
+
+    if answer == None:
+        topText += f"\nWOTD - {str(date.today())}"
+    else:
+        topText += f"\nWORD - {answer}"
 
     emojiText = ''
     for index in range(len(listOfGuessResults)):
