@@ -2,6 +2,13 @@
 
 A discord bot that makes an attempt to solve a wordle puzzle using constraint satisfaction.
 
+Add `Word Owl` to your server by clicking [here](https://discord.com/api/oauth2/authorize?client_id=937395636507144202&permissions=3072&scope=bot)!
+
+Additionally, you can copy the following link to your browser:
+```
+https://discord.com/api/oauth2/authorize?client_id=937395636507144202&permissions=3072&scope=bot
+```
+
 This algorithm runs in linear time [O(n)] and uses largest elimination heuristic till the valid answer list is smaller than 10 elements, then picks by letter popularity.
 
 ## Usage
@@ -31,13 +38,8 @@ Correctly guessed in 2 tries!
 
 ### As discord bot
 
-Since currently this bot has not been deployed to production, you would have to run this yourself and create your own bot.
-
-1. Install discord.py and python-dotenv as dependencies (using pip)
-2. Set up a .env file and add your bot's token to it against the key DISCORD_TOKEN
-3. Run `python discordBot.py`
-4. The bot will respond to all messages starting with '!owl' on your discord server.
+Use the links at the top of this README to add the bot to your own discord server.
 
 ## Future Work
 
-1. Deploy to production
+1. Make timezone agnostic and add more QOL changes.
