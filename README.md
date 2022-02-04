@@ -5,6 +5,7 @@ A discord bot that makes an attempt to solve a wordle puzzle using constraint sa
 Add `Word Owl` to your server by clicking [here](https://discord.com/api/oauth2/authorize?client_id=937395636507144202&permissions=3072&scope=bot)!
 
 Additionally, you can copy the following link to your browser:
+
 ```
 https://discord.com/api/oauth2/authorize?client_id=937395636507144202&permissions=3072&scope=bot
 ```
@@ -42,4 +43,4 @@ Use the links at the top of this README to add the bot to your own discord serve
 
 ## Future Work
 
-1. Make timezone agnostic and add more QOL changes.
+1. More QOL changes.

@@ -2,10 +2,13 @@ import datetime
 from Classes.Interface import LetterResult
 from Wordle.WordList import LIST_OF_ANSWERS   
 
+def getHongKongDate():
+    return (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).date()
+
 def getCorrectGuessOfDay() -> str:
     start_day = datetime.date(2021, 6, 19)
-    today = datetime.datetime.utcnow() + datetime.timedelta(hours=8) # HK Time
-    index = (today.date() - start_day).days
+    today = getHongKongDate()
+    index = (today - start_day).days
     return LIST_OF_ANSWERS[index % len(LIST_OF_ANSWERS)]
 
 

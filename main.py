@@ -1,7 +1,7 @@
 # import sys
 from datetime import date
 from Classes.Engine import Engine
-from Classes.Validator import Validator
+from Classes.Validator import Validator, getHongKongDate
 
 def makeBotGuess(answer: str | None) -> str:
     if(not Validator.isValidAnswer(answer)):
@@ -37,7 +37,7 @@ def makeBotGuess(answer: str | None) -> str:
 
 
     if answer == None:
-        topText += f"\nWOTD - {str(date.today())}"
+        topText += f"\nWOTD - {str(getHongKongDate())}"
     else:
         topText += f"\nWORD - {answer}"
 
