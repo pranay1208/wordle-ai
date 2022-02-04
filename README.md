@@ -38,12 +38,7 @@ Correctly guessed in 2 tries!
 
 ### As discord bot
 
-Since currently this bot has not been deployed to production, you would have to run this yourself and create your own bot.
-
-1. Install discord.py and python-dotenv as dependencies (using pip)
-2. Set up a .env file and add your bot's token to it against the key DISCORD_TOKEN
-3. Run `python discordBot.py`
-4. The bot will respond to all messages starting with '!owl' on your discord server.
+Use the links at the top of this README to add the bot to your own discord server.
 
 ## Future Work
 
