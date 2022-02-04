@@ -2,6 +2,13 @@
 
 A discord bot that makes an attempt to solve a wordle puzzle using constraint satisfaction.
 
+Add `Word Owl` to your server by clicking [here](https://discord.com/api/oauth2/authorize?client_id=937395636507144202&permissions=3072&scope=bot)!
+
+Additionally, you can copy the following link to your browser:
+```
+https://discord.com/api/oauth2/authorize?client_id=937395636507144202&permissions=3072&scope=bot
+```
+
 This algorithm runs in linear time [O(n)] and uses largest elimination heuristic till the valid answer list is smaller than 10 elements, then picks by letter popularity.
 
 ## Usage
@@ -40,4 +47,4 @@ Since currently this bot has not been deployed to production, you would have to 
 
 ## Future Work
 
-1. Deploy to production
+1. Make timezone agnostic and add more QOL changes.
