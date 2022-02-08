@@ -24,14 +24,25 @@ class Engine:
             if(wordWeight > bestGuessWeight):
                 bestGuess = word
                 bestGuessWeight = wordWeight
+            elif (
+                    wordWeight == bestGuessWeight and 
+                    not self.answerListIsSmall() and 
+                    getWordWeightage(bestGuess) < getWordWeightage(word)
+                ):
+                bestGuess = word
+                bestGuessWeight = wordWeight
         if self.answerListIsSmall():
             return bestGuess
 
         for word in self.validGuessList:
             wordWeight = getWordEliminationScore(word, self.heuristics)
-            if(wordWeight > bestGuessWeight):
+            if wordWeight > bestGuessWeight:
                 bestGuess = word
                 bestGuessWeight = wordWeight
+            elif wordWeight == bestGuessWeight and getWordWeightage(bestGuess) < getWordWeightage(word):
+                bestGuess = word
+                bestGuessWeight = wordWeight
+                
         return bestGuess
 
     def handleGuessResult(self, word: str, result:str) -> None:
