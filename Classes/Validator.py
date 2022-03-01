@@ -6,11 +6,16 @@ def getHongKongDate():
     return (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).date()
 
 def getCorrectGuessOfDay() -> str:
-    start_day = datetime.date(2021, 6, 19)
     today = getHongKongDate()
-    index = (today - start_day).days
-    return LIST_OF_ANSWERS[index % len(LIST_OF_ANSWERS)]
+    index = getDateOffset(today)
+    return getGuessFromOffset(index)
 
+def getDateOffset(date: datetime.date) -> int:
+    start_day = datetime.date(2021, 6, 19)
+    return (date - start_day).days
+
+def getGuessFromOffset(offset: int) -> str:
+    return LIST_OF_ANSWERS[offset % len(LIST_OF_ANSWERS)]
 
 class Validator:
     def __init__(self, word: str = None) -> None:
