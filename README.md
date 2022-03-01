@@ -14,6 +14,20 @@ This algorithm runs in linear time [O(n)] and uses largest elimination heuristic
 
 ## Usage
 
+### As discord bot
+
+Use the links at the top of this README to add the bot to your own discord server.
+
+1. Guess word of day by typing `!owl`
+2. Guess a specific word by typing `!owl <word>`
+3. Guess a specific wordle by number by typing `!owl <number>`
+
+```
+!owl
+!owl brine
+!owl 233
+```
+
 ### Local (without discord)
 
 Uncomment the first and the last 2 lines in main.py. Then, simply run `python main.py [arg]` locally to start the program.
@@ -36,10 +50,6 @@ Engine guesses ATONE: _01_1
 Engine guesses THOSE: 11111
 Correctly guessed in 2 tries!
 ```
-
-### As discord bot
-
-Use the links at the top of this README to add the bot to your own discord server.
 
 ## Future Work
 
