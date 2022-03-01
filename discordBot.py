@@ -10,7 +10,11 @@ def getFinalText(components: list[str]) -> str:
     guessWord : str | None = None
     if len(components) >= 2:
         if components[1].isnumeric():
-            guessWord = getGuessFromOffset(int(components[1]))
+            try:
+                offset = int(components[1])
+                guessWord = getGuessFromOffset(offset)
+            except: # added for numbers like 9² which are technically numeric but non-parseable
+                guessWord = components[1]
         else:
             guessWord = components[1]
     if(not Validator.isValidAnswer(guessWord)):
