@@ -3,10 +3,6 @@ from Classes.Engine import Engine
 from Classes.Validator import Validator, getHongKongDate
 
 def makeBotGuess(answer: str | None) -> str:
-    if(not Validator.isValidAnswer(answer)):
-        print(f"'{answer}' is not a recognised answer")
-        return f"**{answer.upper()}** is not a recognised word. You can check out legitimate words at <https://github.com/pranay1208/wordle-ai/blob/master/Wordle/WordList.py>"
-
     engine = Engine()
     validator = Validator(answer)
     result: str = ''
@@ -34,11 +30,6 @@ def makeBotGuess(answer: str | None) -> str:
         print("Could not guess the word correctly")
         topText = f"I did a fucky wucky and couldn't guess."
 
-
-    if answer == None:
-        topText += f"\nWOTD - {str(getHongKongDate())}"
-    else:
-        topText += f"\nWORD - {answer}"
 
     emojiText = ''
     for index in range(len(listOfGuessResults)):
